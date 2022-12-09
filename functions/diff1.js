@@ -1,0 +1,19 @@
+export default function diff1(k, n, m, v, A, f, h) {
+    let temp = [0, 0, 0, 0, 0]
+
+    for(let i = 0; i < m; i++){
+        temp[0] = 0
+        for(let j = 0; j < n; j++) temp[0] += A[i][j] * v[j]
+        temp[0] -= f[i]
+        temp[1] += A[i][k] * temp[0]
+        temp[2] += temp[0] ** 2
+    }
+
+    temp[2] = Math.sqrt(temp[2])
+    temp[3] = h * v[k]
+
+    for(let j = 0; j < n; j++) temp[4] += v[j] ** 2
+    temp[4] = Math.sqrt(temp[4])
+
+    return temp[1] / temp[2] + temp[3] / temp[4]
+}
